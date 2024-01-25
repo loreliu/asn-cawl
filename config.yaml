@@ -22,16 +22,18 @@ dns:
   default-nameserver:
     - tls://1.0.0.1:853
     - system
-  # nameserver:
-  #   - https://dns.nextdns.io/55921d
-  #   - https://dns.adguard-dns.com/dns-query
+  nameserver:
+    - tls://1.0.0.1:853
+    - https://dns.nextdns.io/55921d
+    - https://dns.adguard-dns.com/dns-query
   #   - https://doh.opendns.com/dns-query
   #   - https://dns.quad9.net/dns-query
   #   - https://chrome.cloudflare-dns.com/dns-query
   #   - https://dns.google/dns-query
-  # fallback:
-  #   - https://dns.adguard-dns.com/dns-query
-  #   - https://dns.nextdns.io/55921d
+  fallback:
+    - tls://1.0.0.1:853
+    - https://dns.adguard-dns.com/dns-query
+    - https://dns.nextdns.io/55921d
   #   - https://doh.opendns.com/dns-query
   #   - https://dns.quad9.net/dns-query
   #   - https://chrome.cloudflare-dns.com/dns-query
@@ -68,6 +70,15 @@ proxy-providers:
     type: http
     path: "./proxy_provider/dddd.yaml"
     url: https://gitlab.com/api/v4/projects/46094876/repository/files/data%2Fv2ray%2Fgc-http.txt/raw?ref=main&private_token=glpat-nsgXFuz36iPYLby2vCKK
+    interval: 1800
+    health-check:
+      enable: true
+      interval: 600
+      url: http://captive.apple.com/generate_204
+  gc-clash:
+    type: http
+    path: "./proxy_provider/666.yaml"
+    url: https://oss.v2rayse.com/proxies/data/2023-11-07/cDBM6Q.yaml
     interval: 1800
     health-check:
       enable: true
@@ -357,39 +368,40 @@ proxy-groups:
     interval: 300
     strategy: round-robin
     use:
-      - nthlink-server
+      # - nthlink-server
       - sub.xf.free.hr
       - nodpai-server
       - gc-http
-      - clash-worker-server
+      - gc-clash
+      # - clash-worker-server
       - tencloud-free-server
       - Pawdroid-gh
-      - aiboboxx-v2rayfree-gh
-      - freefq-gh
+      # - aiboboxx-v2rayfree-gh
+      # - freefq-gh
       - sub.king361.link
       - cf-edgetunnel-byoip
-      - my-quicktunnel-render
-      - mfuu
-      - no-more-walls
-      - getNode
-      - v2ray-node
-      - mahdibland
-      - clashnode
+      # - my-quicktunnel-render
+      # - mfuu
+      # - no-more-walls
+      # - getNode
+      # - v2ray-node
+      # - mahdibland
+      # - clashnode
       - bulinkbulink
       - king361
       - vps_jdkz
       - iP_CF
-      - go4sharing
-      - FreeV2rays
-      - barry-far
-      - barry-far-vl
-      - barry-far-tr
-      - barry-far-ss
-      - barry-far-ssr
-      - soroushmirzaei
-      - Mohammadgb0078-vl
-      - Mohammadgb0078-vm
-      - liketolivefree
+      # - go4sharing
+      # - FreeV2rays
+      # - barry-far
+      # - barry-far-vl
+      # - barry-far-tr
+      # - barry-far-ss
+      # - barry-far-ssr
+      # - soroushmirzaei
+      # - Mohammadgb0078-vl
+      # - Mohammadgb0078-vm
+      # - liketolivefree
   - name: "♻️ 自动选择"
     type: url-test
     url: http://captive.apple.com/generate_204
@@ -420,17 +432,17 @@ rules:
   - DST-PORT,7895,REJECT
   - DST-PORT,7892,REJECT
   - IP-CIDR,198.18.0.1/16,REJECT,no-resolve
-  - "DOMAIN,clash.razord.top,DIRECT"
-  - "DOMAIN,yacd.haishan.me,DIRECT"
-  - "DOMAIN,sub.cfno1.eu.org,DIRECT"
-  - "DOMAIN,raw.githubusercontent.com,DIRECT"
-  - "DOMAIN,goodbaby.onrender.com,DIRECT"
-  - "DOMAIN,gitlab.com,DIRECT"
-  - "DOMAIN,sub.pmsub.me,DIRECT"
-  - "DOMAIN,xn--b6gac.eu.org,DIRECT"
-  - "DOMAIN,sub.king361.link,DIRECT"
-  - "DOMAIN,sub.xf.free.hr,DIRECT"
-  - "DOMAIN,sub.vpnpls.com,DIRECT"
+  # - "DOMAIN,clash.razord.top,DIRECT"
+  # - "DOMAIN,yacd.haishan.me,DIRECT"
+  # - "DOMAIN,sub.cfno1.eu.org,DIRECT"
+  # - "DOMAIN,raw.githubusercontent.com,DIRECT"
+  # - "DOMAIN,goodbaby.onrender.com,DIRECT"
+  # - "DOMAIN,gitlab.com,DIRECT"
+  # - "DOMAIN,sub.pmsub.me,DIRECT"
+  # - "DOMAIN,xn--b6gac.eu.org,DIRECT"
+  # - "DOMAIN,sub.king361.link,DIRECT"
+  # - "DOMAIN,sub.xf.free.hr,DIRECT"
+  # - "DOMAIN,sub.vpnpls.com,DIRECT"
   - "GEOIP,LAN,DIRECT"
   - "GEOIP,CN,节点选择"
   - "MATCH,节点选择"

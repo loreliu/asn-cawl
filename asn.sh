@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# cd /home/ubuntu
+# This script is used to continuously fetch and process ASN (Autonomous System Number) information from a CSV file.
+# It downloads a file, retrieves ASN information using an API, and runs a FOFA (Find Open Files and Addresses) hack for each ASN.
+# The script runs in an infinite loop, periodically fetching and processing ASN information.
 
-# random_chars=$(LC_ALL=C tr -dc 'a-zA-Z0-9' </dev/urandom | head -c 5)
-# shiny run app.py --host 0.0.0.0 --port 7860 &
 # Function to download a file and check for errors
 download_file() {
     local url="$1"
@@ -15,11 +15,6 @@ download_file() {
         exit 1
     fi
 }
-
-# TELEGRAM_BOT_TOKEN="${TELEGRAM_BOT_TOKEN:-"6350142127:AAHXmjwYHDkjouqeRVXG_BWPMejaHQ7NY5U"}"
-# TALLIPS="${ALLIPS:-"1000"}"
-# CURRENT_ASN="${CURRENT_ASN:-"170"}"
-# echo "$CURRENT_ASN" >current_asn.txt
 
 asn_info() {
     # Declare variables as global using the 'declare' command with the '-g' option
@@ -62,7 +57,6 @@ asn_info() {
 run_fofa_hack() {
     local asn="$1"
     local handle="$2"
-    # local description="$3"
     ./fofa-asn -e 500 -f -l 2 -o json --proxy '127.0.0.1:7890' -w 10 -a $asn
 }
 
@@ -80,13 +74,11 @@ while true; do
 
         if [ "$found_current_asn" = true ]; then
             description="${description//\"/}"
-            # clear
             echo "================================================================"
             echo "ASN: $asn"
             echo "Name: $name"
-            # echo "Description: $description"
             echo "================================================================"
-            asn_info "$asn"
+            # asn_info "$asn"
             run_fofa_hack "$asn" "$name"
             sleep 10
         fi
