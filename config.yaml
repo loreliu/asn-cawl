@@ -1,0 +1,447 @@
+mixed-port: 7893
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: true
+external-controller: 0.0.0.0:7860
+global-client-fingerprint: random
+find-process-mode: strict
+tcp-concurrent: true
+profile:
+  store-selected: true
+experimental:
+  ignore-resolve-fail: true
+  sniff-tls-sni: true
+dns:
+  enabled: true
+  ipv6: true
+  # prefer-h3: true
+  # listen: 0.0.0.0:5353
+  enhanced-mode: redir-host
+  use-hosts: true
+  default-nameserver:
+    - tls://1.0.0.1:853
+    - system
+  # nameserver:
+  #   - https://dns.nextdns.io/55921d
+  #   - https://dns.adguard-dns.com/dns-query
+  #   - https://doh.opendns.com/dns-query
+  #   - https://dns.quad9.net/dns-query
+  #   - https://chrome.cloudflare-dns.com/dns-query
+  #   - https://dns.google/dns-query
+  # fallback:
+  #   - https://dns.adguard-dns.com/dns-query
+  #   - https://dns.nextdns.io/55921d
+  #   - https://doh.opendns.com/dns-query
+  #   - https://dns.quad9.net/dns-query
+  #   - https://chrome.cloudflare-dns.com/dns-query
+  #   - https://dns.google/dns-query
+proxy-providers:
+  nthlink-server:
+    type: http
+    path: "./proxy_provider/nthlink.yaml"
+    url: https://nth-api-sub.xn--b6gac.eu.org/api/nthlink
+    interval: 900
+    health-check:
+      enable: true
+      interval: 600
+      url: http://captive.apple.com/generate_204
+  sub.xf.free.hr:
+    type: http
+    path: "./proxy_provider/clash1111.yaml"
+    url: https://sub.xf.free.hr/api/sub?format=clash
+    interval: 1800
+    health-check:
+      enable: true
+      interval: 600
+      url: http://captive.apple.com/generate_204
+  nodpai-server:
+    type: http
+    path: "./proxy_provider/nodpai.yaml"
+    url: https://sub.pmsub.me/base64
+    interval: 1800
+    health-check:
+      enable: true
+      interval: 600
+      url: http://captive.apple.com/generate_204
+  gc-http:
+    type: http
+    path: "./proxy_provider/dddd.yaml"
+    url: https://gitlab.com/api/v4/projects/46094876/repository/files/data%2Fv2ray%2Fgc-http.txt/raw?ref=main&private_token=glpat-nsgXFuz36iPYLby2vCKK
+    interval: 1800
+    health-check:
+      enable: true
+      interval: 600
+      url: http://captive.apple.com/generate_204
+  clash-worker-server:
+    type: http
+    path: "./proxy_provider/adb.yaml"
+    url: https://proxy-provider.do.xn--b6gac.eu.org/api/convert?url=http%3A%2F%2Fcdn-b100.xn--b6gac.eu.org%2Fclash&target=clash
+    interval: 1800
+    health-check:
+      enable: true
+      interval: 600
+      url: http://captive.apple.com/generate_204
+  tencloud-free-server:
+    type: http
+    path: "./proxy_provider/air.yaml"
+    url: https://sub.vpnpls.com/%E4%BB%8A%E6%97%A5%E7%AC%94%E8%AE%B0-%E9%98%B2%E5%A4%B1%E8%81%94%E4%B8%93%E7%94%A8.php
+    interval: 1800
+    health-check:
+      enable: true
+      interval: 600
+      url: http://captive.apple.com/generate_204
+  Pawdroid-gh:
+    type: http
+    url: https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub
+    path: ./free-server.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  aiboboxx-v2rayfree-gh:
+    type: http
+    url: https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2
+    path: ./free-server2.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  freefq-gh:
+    type: http
+    url: https://raw.githubusercontent.com/freefq/free/master/v2
+    path: ./free-server3.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  sub.king361.link:
+    type: http
+    url: https://sub.king361.link/sub
+    path: ./free-server4.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  my-quicktunnel-render:
+    type: http
+    url: https://nth-api-sub.xn--b6gac.eu.org/api/render
+    path: ./free-server6.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  cf-edgetunnel-byoip:
+    type: http
+    url: https://sub.cfno1.eu.org/sub
+    path: ./free-server5.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  mfuu:
+    type: http
+    url: https://gitlab.com/mfuu/v2ray/-/raw/master/clash.yaml
+    path: ./mfuu.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  no-more-walls:
+    type: http
+    url: https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.yml
+    path: ./no-more-walls.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  getNode:
+    type: http
+    url: https://raw.githubusercontent.com/a2470982985/getNode/main/clash.yaml
+    path: ./getNode.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  v2ray-node:
+    type: http
+    url: https://raw.githubusercontent.com/mlabalabala/v2ray-node/main/nodefree4clash.txt
+    path: ./v2ray-node.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  mahdibland:
+    type: http
+    url: https://raw.githubusercontent.com/mahdibland/SSAggregator/master/sub/sub_merge_yaml.yml
+    path: ./mahdibland.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  clashnode:
+    type: http
+    url: https://raw.githubusercontent.com/mlabalabala/v2ray-node/main/clashnode4clash.txt
+    path: ./clashnode.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  bulinkbulink:
+    type: http
+    url: https://bulinkbulink.com/freefq/free/master/v2
+    path: ./bulinkbulink.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  king361:
+    type: http
+    url: https://sub.king361.link/sub
+    path: ./king361.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  iP_CF:
+    type: http
+    url: https://sub.xf.free.hr/api/rss?rsshubUrl=https://rss-hub-seven-henna.vercel.app/telegram/channel/iP_CF
+    path: ./iP_CF.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  vps_jdkz:
+    type: http
+    url: https://sub.xf.free.hr/api/rss?rsshubUrl=https://rss-hub-seven-henna.vercel.app/telegram/channel/vps_jdkz
+    path: ./vps_jdkz.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  go4sharing:
+    type: http
+    url: https://raw.githubusercontent.com/go4sharing/sub/main/sub.yaml
+    path: ./go4sharing.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  FreeV2rays:
+    type: http
+    url: https://sub.xf.free.hr/api/rss?rsshubUrl=https://rss-hub-seven-henna.vercel.app/telegram/channel/FreeV2rays
+    path: ./FreeV2rays.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  goodbaby:
+    type: http
+    url: https://goodbaby.onrender.com/sub
+    path: ./goodbaby.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  barry-far:
+    type: http
+    url: https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Splitted-By-Protocol/vmess.txt
+    path: ./barry-far.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  barry-far-vl:
+    type: http
+    url: https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Splitted-By-Protocol/vless.txt
+    path: ./barry-far-vl.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  barry-far-tr:
+    type: http
+    url: https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Splitted-By-Protocol/trojan.txt
+    path: ./barry-far-tr.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  barry-far-ss:
+    type: http
+    url: https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Splitted-By-Protocol/ss.txt
+    path: ./barry-far-ss.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  barry-far-ssr:
+    type: http
+    url: https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Splitted-By-Protocol/ssr.txt
+    path: ./barry-far-ssr.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  soroushmirzaei:
+    type: http
+    url: https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/layers/ipv4
+    path: ./soroushmirzaei.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  Mohammadgb0078-vl:
+    type: http
+    url: https://raw.githubusercontent.com/Mohammadgb0078/IRV2ray/main/vless.txt
+    path: ./Mohammadgb0078-vl.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  Mohammadgb0078-vm:
+    type: http
+    url: https://raw.githubusercontent.com/Mohammadgb0078/IRV2ray/main/vmess.txt
+    path: ./Mohammadgb0078-vm.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  liketolivefree:
+    type: http
+    url: https://raw.githubusercontent.com/liketolivefree/kobabi/main/sub.txt
+    path: ./liketolivefree.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+proxy-groups:
+  - name: "节点选择"
+    type: select
+    proxies:
+      - "⚖️ 负载均衡-轮询"
+      - "⚖️ 负载均衡-散列"
+      - "⚖️ 负载均衡-粘性"
+      - "♻️ 自动选择"
+  - name: "⚖️ 负载均衡-轮询"
+    type: load-balance
+    url: http://captive.apple.com/generate_204
+    interval: 300
+    strategy: round-robin
+    use:
+      - nthlink-server
+      - sub.xf.free.hr
+      - nodpai-server
+      - gc-http
+      - clash-worker-server
+      - tencloud-free-server
+      - Pawdroid-gh
+      - aiboboxx-v2rayfree-gh
+      - freefq-gh
+      - sub.king361.link
+      - cf-edgetunnel-byoip
+      - my-quicktunnel-render
+      - mfuu
+      - no-more-walls
+      - getNode
+      - v2ray-node
+      - mahdibland
+      - clashnode
+      - bulinkbulink
+      - king361
+      - vps_jdkz
+      - iP_CF
+      - go4sharing
+      - FreeV2rays
+      - barry-far
+      - barry-far-vl
+      - barry-far-tr
+      - barry-far-ss
+      - barry-far-ssr
+      - soroushmirzaei
+      - Mohammadgb0078-vl
+      - Mohammadgb0078-vm
+      - liketolivefree
+  - name: "♻️ 自动选择"
+    type: url-test
+    url: http://captive.apple.com/generate_204
+    interval: 150
+    tolerance: 90
+    use:
+      - nthlink-server
+      - clash-worker-server
+  - name: "⚖️ 负载均衡-散列"
+    type: load-balance
+    url: http://captive.apple.com/generate_204
+    interval: 300
+    strategy: consistent-hashing
+    use:
+      - nthlink-server
+      - clash-worker-server
+      - tencloud-free-server
+  - name: "⚖️ 负载均衡-粘性"
+    type: load-balance
+    url: http://captive.apple.com/generate_204
+    interval: 300
+    strategy: sticky-sessions
+    use:
+      - nthlink-server
+      - clash-worker-server
+      - tencloud-free-server
+rules:
+  - DST-PORT,7895,REJECT
+  - DST-PORT,7892,REJECT
+  - IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+  - "DOMAIN,clash.razord.top,DIRECT"
+  - "DOMAIN,yacd.haishan.me,DIRECT"
+  - "DOMAIN,sub.cfno1.eu.org,DIRECT"
+  - "DOMAIN,raw.githubusercontent.com,DIRECT"
+  - "DOMAIN,goodbaby.onrender.com,DIRECT"
+  - "DOMAIN,gitlab.com,DIRECT"
+  - "DOMAIN,sub.pmsub.me,DIRECT"
+  - "DOMAIN,xn--b6gac.eu.org,DIRECT"
+  - "DOMAIN,sub.king361.link,DIRECT"
+  - "DOMAIN,sub.xf.free.hr,DIRECT"
+  - "DOMAIN,sub.vpnpls.com,DIRECT"
+  - "GEOIP,LAN,DIRECT"
+  - "GEOIP,CN,节点选择"
+  - "MATCH,节点选择"
+redir-port: 7892
+tproxy-port: 7895
+port: 7890
+socks-port: 7891
+secret: "123456"
+bind-address: "*"
+geodata-loader: standard
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
